@@ -4,10 +4,12 @@ import createStore from './createStore';
 import rootReducer from './modules/rootReducer';
 import rootSaga from './modules/rootSaga';
 
+console.tron.log('store index');
 const sagaMonitor =
   process.env.NODE_ENV === 'development'
     ? console.tron.createSagaMonitor()
     : null;
+
 const sagaMiddleware = createSagaMiddleware({ sagaMonitor });
 
 const middlewares = [sagaMiddleware];
