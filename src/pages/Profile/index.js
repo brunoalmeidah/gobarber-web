@@ -5,12 +5,17 @@ import AvatarInput from './AvatarInput';
 
 import { Container } from './styles';
 import { updateProfileRequest } from '~/store/modules/user/actions';
+import { signOut } from '~/store/modules/auth/actions';
 
 export default function Profile() {
   const profile = useSelector(state => state.user.profile);
   const dispatch = useDispatch();
   function handleSubmit(data) {
     dispatch(updateProfileRequest(data));
+  }
+
+  function handleSignOut() {
+    dispatch(signOut());
   }
   return (
     <Container>
@@ -33,7 +38,9 @@ export default function Profile() {
 
         <button type="submit">Atualizar Perfil</button>
       </Form>
-      <button type="button"> Sair do Gobarber</button>
+      <button type="button" onClick={handleSignOut}>
+        Sair do Gobarber
+      </button>
     </Container>
   );
 }
